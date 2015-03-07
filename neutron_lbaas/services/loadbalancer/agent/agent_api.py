@@ -66,3 +66,9 @@ class LbaasAgentApi(object):
         cctxt = self.client.prepare()
         return cctxt.call(self.context, 'update_pool_stats', pool_id=pool_id,
                           stats=stats, host=self.host)
+
+    def ha_reschedule_pool(self):
+        return self.call(
+            self.context,
+            self.make_msg('ha_reschedule_pool', host=self.host)
+        )
