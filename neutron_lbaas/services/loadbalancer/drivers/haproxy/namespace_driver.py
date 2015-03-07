@@ -221,6 +221,7 @@ class HaproxyNSDriver(agent_device_driver.AgentDeviceDriver):
             return self._parse_stats(raw_stats)
         except socket.error as e:
             LOG.warn(_LW('Error while connecting to stats socket: %s'), e)
+            raise socket.error
             return {}
 
     def _parse_stats(self, raw_stats):
